@@ -1,5 +1,6 @@
-# -*- encoding: utf-8 -*-
 # ! python3
+# -*- encoding: utf-8 -*-
+# mypy: ignore-errors
 
 import os
 import sys
@@ -37,7 +38,9 @@ class QtDatasetViewer(QMainWindow):
 
         self.image_label = QLabel()
         self.image_label.setBackgroundRole(QPalette.Base)
-        self.image_label.setSizePolicy(QSizePolicy.Ignored, QSizePolicy.Ignored)
+        self.image_label.setSizePolicy(
+            QSizePolicy.Ignored, QSizePolicy.Ignored
+        )
         self.image_label.setScaledContents(True)
 
         self.scroll_area = QScrollArea()
@@ -55,38 +58,54 @@ class QtDatasetViewer(QMainWindow):
         self.setCentralWidget(container)
 
         self.setWindowTitle("Image Viewer")
-        self.window_width, self.window_height = self.geometry().width(), self.geometry().height()
-        self.setWindowIcon(QIcon('../icons/favicon.jpeg'))
+        self.window_width, self.window_height = (
+            self.geometry().width(),
+            self.geometry().height(),
+        )
+        self.setWindowIcon(QIcon("../icons/favicon.jpeg"))
         self.resize(self.window_width * 2, self.window_height * 2)
 
-        self.filemenu = self.menuBar().addMenu('&File')
+        self.filemenu = self.menuBar().addMenu("&File")
 
-        self.filetoolbar = QToolBar('File')
+        self.filetoolbar = QToolBar("File")
         self.filetoolbar.setIconSize(QSize(30, 30))
         self.addToolBar(Qt.ToolBarArea.TopToolBarArea, self.filetoolbar)
 
-        self.open_doc_opt = self.makeAction(self, '../icons/open.png', 'Open Folder...', 'Open Folder...',
-                                            self.open_folder)
+        self.open_doc_opt = self.makeAction(
+            self,
+            "../icons/open.png",
+            "Open Folder...",
+            "Open Folder...",
+            self.open_folder,
+        )
         self.open_doc_opt.setShortcut(QKeySequence.Open)
-        self.prev_image = self.makeAction(self, '', 'Prev image', 'Prev image', self.prev_image)
-        self.prev_image.setShortcut(QKeySequence('Left'))
-        self.next_image = self.makeAction(self, '', 'Next image', 'Next image', self.next_image)
-        self.next_image.setShortcut(QKeySequence('Right'))
+        self.prev_image = self.makeAction(
+            self, "", "Prev image", "Prev image", self.prev_image
+        )
+        self.prev_image.setShortcut(QKeySequence("Left"))
+        self.next_image = self.makeAction(
+            self, "", "Next image", "Next image", self.next_image
+        )
+        self.next_image.setShortcut(QKeySequence("Right"))
         self.filemenu.addActions([self.open_doc_opt])
         self.filemenu.addSeparator()
 
-        self.exit_opt = self.makeAction(self, '', 'Exit', 'Exit', self.close)
+        self.exit_opt = self.makeAction(self, "", "Exit", "Exit", self.close)
         self.filemenu.addActions([self.exit_opt])
         self.filetoolbar.addActions([self.prev_image, self.next_image])
 
         if dataloader is not None:
             self.pointer = 0
             self.dataloader = dataloader
-            self.progress_bar.setMaximum(max(0, self.dataloader.get_size() - 1))
+            self.progress_bar.setMaximum(
+                max(0, self.dataloader.get_size() - 1)
+            )
             self.open_image_from_dataloader()
 
     def open_image_from_dataloader(self):
-        pil_image = self.dataloader.convert(self.dataloader.get_dataloader()[self.pointer])
+        pil_image = self.dataloader.convert(
+            self.dataloader.get_dataloader()[self.pointer]
+        )
         image = QPixmap.fromImage(ImageQt(pil_image))
         self.image_label.setPixmap(image)
         self.scale_factor = 1.0
@@ -94,7 +113,10 @@ class QtDatasetViewer(QMainWindow):
         self.fit_to_window()
 
     def next_image(self):
-        if self.pointer + 1 < len(self.images) or self.pointer + 1 < self.dataloader.get_size():
+        if (
+            self.pointer + 1 < len(self.images)
+            or self.pointer + 1 < self.dataloader.get_size()
+        ):
             self.pointer += 1
             self.open_image_by_pointer()
 
@@ -104,9 +126,9 @@ class QtDatasetViewer(QMainWindow):
             self.open_image_by_pointer()
 
     def open_folder(self):
-        folder_path = QFileDialog.getExistingDirectory(self, 'Select Folder')
+        folder_path = QFileDialog.getExistingDirectory(self, "Select Folder")
 
-        types = ('*.jpg', '*.png', '*.webp', '.jpeg')
+        types = ("*.jpg", "*.png", "*.webp", ".jpeg")
         images = []
         for files in types:
             images.extend(glob(folder_path + os.sep + files))
@@ -128,7 +150,9 @@ class QtDatasetViewer(QMainWindow):
             self.setWindowTitle(file_name.split(os.sep)[-1])
             image = QImage(file_name)
             if image.isNull():
-                QMessageBox.information(self, "Image Viewer", "Cannot load %s." % file_name)
+                QMessageBox.information(
+                    self, "Image Viewer", "Cannot load %s." % file_name
+                )
                 return
             self.image_label.setPixmap(QPixmap.fromImage(image))
             self.scale_factor = 1.0
@@ -152,15 +176,29 @@ class QtDatasetViewer(QMainWindow):
 
     def scale_image(self, sf: float):
         self.scale_factor *= sf
-        self.image_label.resize(self.scale_factor * self.image_label.pixmap().size())
+        self.image_label.resize(
+            self.scale_factor * self.image_label.pixmap().size()
+        )
 
         self.adjust_scroll_bar(self.scroll_area.horizontalScrollBar(), sf)
         self.adjust_scroll_bar(self.scroll_area.verticalScrollBar(), sf)
 
     def adjust_scroll_bar(self, scroll_bar: QAbstractScrollArea, sf: float):
-        scroll_bar.setValue(int(sf * scroll_bar.value() + ((sf - 1) * scroll_bar.pageStep() / 2)))
+        scroll_bar.setValue(
+            int(
+                sf * scroll_bar.value()
+                + ((sf - 1) * scroll_bar.pageStep() / 2)
+            )
+        )
 
-    def makeAction(self, parent_obj, icon_destination, name_of_action, status_tip, triggered_method):
+    def makeAction(
+        self,
+        parent_obj,
+        icon_destination,
+        name_of_action,
+        status_tip,
+        triggered_method,
+    ):
         act = QAction(QIcon(icon_destination), name_of_action, parent_obj)
         act.setStatusTip(status_tip)
         act.triggered.connect(triggered_method)
@@ -172,7 +210,7 @@ class QtDatasetViewer(QMainWindow):
         sys.exit(app.exec_())
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     the_app = QApplication(sys.argv)
 
     imageViewerApp = QtDatasetViewer()

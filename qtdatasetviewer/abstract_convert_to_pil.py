@@ -1,5 +1,6 @@
-# -*- encoding: utf-8 -*-
 # ! python3
+# -*- encoding: utf-8 -*-
+# mypy: ignore-errors
 
 from abc import ABC, abstractmethod
 
@@ -8,7 +9,6 @@ from torch.utils.data import Dataset
 
 
 class AbstractConvertToPil(ABC):
-
     def __init__(self, dataloader: Dataset):
         self.dataloader = dataloader
         super().__init__()

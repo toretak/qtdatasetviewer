@@ -1,5 +1,6 @@
-# -*- encoding: utf-8 -*-
 # ! python3
+# -*- encoding: utf-8 -*-
+# mypy: ignore-errors
 
 import sys
 from glob import glob
@@ -14,16 +15,15 @@ from qtdatasetviewer.qt_dataset_viewer import QtDatasetViewer
 
 
 class Convert(AbstractConvertToPil):
-
     def convert(self, item) -> Image:
         image, mask = item
         transform = T.ToPILImage()
         return transform(image)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     the_app = QApplication(sys.argv)
-    dataset = SampleDataset(files=glob('data/*.*'))
+    dataset = SampleDataset(files=glob("data/*.*"))
 
     imageViewerApp = QtDatasetViewer(Convert(dataset))
 
