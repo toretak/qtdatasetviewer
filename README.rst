@@ -6,10 +6,10 @@
 .. |pic4| image:: https://img.shields.io/badge/%20type_checker-mypy-%231674b1?style=flat
 .. |pic5| image:: https://img.shields.io/badge/platform-windows%20%7C%20linux%20%7C%20macos-lightgrey
 .. |pic6| image:: https://github.com/toretak/qtdatasetviewer/actions/workflows/testing.yml/badge.svg
-.. |pic7| image:: https://img.shields.io/readthedocs/pytemppack
-.. |pic8| image:: https://img.shields.io/pypi/v/pytemppack
+.. |pic7| image:: https://img.shields.io/readthedocs/qtdatasetviewer
+.. |pic8| image:: https://img.shields.io/pypi/v/qtdatasetviewer
 
-.. _qtdatasetviewer: https://github.com/toretak/qtdatasetviewer/tree/main/pytemppack
+.. _qtdatasetviewer: https://github.com/toretak/qtdatasetviewer/tree/main/qtdatasetviewer
 .. _examples: https://github.com/toretak/qtdatasetviewer/tree/main/examples
 .. _contribute: https://github.com/toretak/qtdatasetviewer/blob/main/CONTRIBUTING.rst
 
@@ -107,14 +107,6 @@ Usage
         imageViewerApp.show()
         sys.exit(the_app.exec_())
 
-Community
----------
-
-If you are interested in cross-disciplinary research related to machine learning, you can:
-
-* Follow DataLab on `Twitter`_.
-* Check the `website`_.
-* Read our `papers`_.
 
 
 Disclaimer
