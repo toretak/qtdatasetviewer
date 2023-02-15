@@ -1,4 +1,4 @@
-name: pytemppack
+name: qtdatasetviewer
 
 on:
   push:
@@ -48,7 +48,7 @@ jobs:
         run: python -m bandit .
 
       - name: mypy
-        run: python -m mypy pytemppack
+        run: python -m mypy qtdatasetviewer
 
   test:
     needs: linting
@@ -111,4 +111,4 @@ jobs:
       # Testing
       #---------
       - name: pytest
-        run: poetry run python -m pytest --cov=pytemppack
+        run: poetry run python -m pytest --cov=qtdatasetviewer

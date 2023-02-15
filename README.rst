@@ -35,7 +35,7 @@
 .. _website: https://data.research.vub.be/
 .. _papers: https://researchportal.vub.be/en/organisations/data-analytics-laboratory/publications/
 
-.. _repo: https://github.com/AndresAlgaba/pytemppack
+.. _repo: https://github.com/toretak/qtdatasetviewer
 
 .. _Dynamic versioning: https://pypi.org/project/poetry-dynamic-versioning/
 
