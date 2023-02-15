@@ -1,15 +1,14 @@
 # -*- encoding: utf-8 -*-
 # ! python3
 
-from __future__ import annotations
-from __future__ import generator_stop
+from __future__ import annotations, generator_stop
 
 from pathlib import Path
 
-from PIL import Image
-import numpy as np
 import albumentations as A
+import numpy as np
 from albumentations.pytorch.transforms import ToTensorV2
+from PIL import Image
 from torch.utils.data import Dataset
 
 Image.MAX_IMAGE_PIXELS = None

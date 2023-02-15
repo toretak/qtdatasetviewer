@@ -3,14 +3,14 @@
 
 import sys
 from glob import glob
-from dataset import SampleDataset
-from PyQt5.QtWidgets import QApplication
-
-from PIL import Image
-from qtdatasetviewer.abstract_convert_to_pil import AbstractConvertToPil
-from qtdatasetviewer.qt_dataset_viewer import QtDatasetViewer
 
 import torchvision.transforms as T
+from dataset import SampleDataset
+from PIL import Image
+from PyQt5.QtWidgets import QApplication
+
+from qtdatasetviewer.abstract_convert_to_pil import AbstractConvertToPil
+from qtdatasetviewer.qt_dataset_viewer import QtDatasetViewer
 
 
 class Convert(AbstractConvertToPil):

@@ -1,10 +1,29 @@
+[project]
+name = "qtdatasetviewer"
+version = "0.0.2"
+authors = [
+  { name="toretak", email="toretak@gmail.com" },
+]
+description = "PyQt5 based viewer for torch.utils.dataset"
+readme = "README.md"
+requires-python = ">=3.8"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/toretak/qtdatasetviewer"
+"Bug Tracker" = "https://github.com/toretak/qtdatasetviewer/issues"
+
 [build-system]
 requires = ["poetry_core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.poetry]
 name = "qtdatasetviewer"
-version = "0.0.0"
+version = "0.0.2"
 description = "Torch dataset explorer"
 license = "MIT"
 authors = [
@@ -13,14 +32,15 @@ authors = [
 maintainers = [
   "Toretak <toretak@gmail.com>"
 ]
-readme = "README.rst"
+readme = "README.md"
 homepage = "https://github.com/toretak/qtdatasetviewer"
 repository = "https://github.com/toretak/qtdatasetviewer"
 documentation = ""
 keywords = [
   "python",
   "package",
-  "template",
+  "torch",
+  "dataset",
   "poetry"]
 packages = [
   { include = "qtdatasetviewer" }
@@ -29,9 +49,7 @@ packages = [
 [tool.poetry.dependencies]
 torch = ">=1.13.1"
 pyqt5 = ">=5.15"
-python = ">=3.8,<3.10"
-numpy = ">=1.22.3"
-pandas = ">=1.4.2"
+python = ">=3.8"
 
 [tool.poetry.dev-dependencies]
 albumentations = ">=1.3"
@@ -61,7 +79,7 @@ extend-exclude = '''
 py_version=39
 line_length = 79
 profile = "black"
-extend_skip_glob = ["docs/*"]
+extend_skip_glob = ["docs/*", "data/*"]
 
 [tool.mypy]
 python_version = "3.9"

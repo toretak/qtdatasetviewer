@@ -2,8 +2,9 @@
 # ! python3
 
 from abc import ABC, abstractmethod
-from torch.utils.data import Dataset
+
 from PIL import Image
+from torch.utils.data import Dataset
 
 
 class AbstractConvertToPil(ABC):

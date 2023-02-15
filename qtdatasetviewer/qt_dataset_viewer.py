@@ -3,13 +3,26 @@
 
 import os
 import sys
-
 from glob import glob
-from PyQt5.QtCore import Qt, QSize
-from PyQt5.QtWidgets import QApplication, QLabel, QSizePolicy, QScrollArea, \
-    QMessageBox, QMainWindow, QAction, QFileDialog, QToolBar, QProgressBar, QBoxLayout, QWidget, QAbstractScrollArea
-from PyQt5.QtGui import QImage, QPixmap, QPalette, QIcon, QKeySequence
+
 from PIL.ImageQt import ImageQt
+from PyQt5.QtCore import QSize, Qt
+from PyQt5.QtGui import QIcon, QImage, QKeySequence, QPalette, QPixmap
+from PyQt5.QtWidgets import (
+    QAbstractScrollArea,
+    QAction,
+    QApplication,
+    QBoxLayout,
+    QFileDialog,
+    QLabel,
+    QMainWindow,
+    QMessageBox,
+    QProgressBar,
+    QScrollArea,
+    QSizePolicy,
+    QToolBar,
+    QWidget,
+)
 
 from .abstract_convert_to_pil import AbstractConvertToPil
 
