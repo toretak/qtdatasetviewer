@@ -1,4 +1,4 @@
-source = pytemppack
+source = qtdatasetviewer
 
 .PHONY: clean format check test install docs
 
