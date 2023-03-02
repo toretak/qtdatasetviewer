@@ -20,10 +20,8 @@ Usage
 -----
 
 ```python
-    import sys
     from glob import glob
     from dataset import SampleDataset
-    from PyQt5.QtWidgets import QApplication
 
     from PIL import Image
     from qtdatasetviewer.abstract_convert_to_pil import AbstractConvertToPil

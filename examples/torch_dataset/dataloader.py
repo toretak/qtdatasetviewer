@@ -2,13 +2,11 @@
 # -*- encoding: utf-8 -*-
 # mypy: ignore-errors
 
-import sys
 from glob import glob
 
 import torchvision.transforms as T
 from dataset import SampleDataset
 from PIL import Image
-from PyQt5.QtWidgets import QApplication
 
 from qtdatasetviewer.abstract_convert_to_pil import AbstractConvertToPil
 from qtdatasetviewer.qt_dataset_viewer import run_qt_dataset_viewer
