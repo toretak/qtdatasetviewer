@@ -4,6 +4,8 @@ Qt Dataset Viewer
 
 This module is for debugging ML projects. It is PyQt5 based viewer for torch.utils.dataset.
 
+![main window](docs/assets/main_window.png "main window")
+
 
 
 Installation
@@ -48,6 +50,6 @@ Usage
 Disclaimer
 ----------
 
-The package and the code is provided "as-is" and there is NO WARRANTY of any kind. 
+The package and the code are provided "as-is" and there is NO WARRANTY of any kind. 
 Use it only if the content and output files make sense to you.
 
