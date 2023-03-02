@@ -63,7 +63,7 @@ class QtDatasetViewer(QMainWindow):
             self.geometry().height(),
         )
         self.setWindowIcon(QIcon("../icons/favicon.jpeg"))
-        self.resize(self.window_width * 2, self.window_height * 2)
+        self.resize(self.window_width * 1.5, self.window_height * 1.5)
 
         self.filemenu = self.menuBar().addMenu("&File")
 
@@ -110,6 +110,7 @@ class QtDatasetViewer(QMainWindow):
         self.image_label.setPixmap(image)
         self.scale_factor = 1.0
         self.scroll_area.setVisible(True)
+        self.fit_window_to_image()
         self.fit_to_window()
 
     def next_image(self):
@@ -160,9 +161,14 @@ class QtDatasetViewer(QMainWindow):
             self.scroll_area.setVisible(True)
             self.fit_to_window()
 
-    def normal_size(self):
-        self.image_label.adjustSize()
-        self.scale_factor = 1.0
+    def fit_window_to_image(self):
+        im_width = self.image_label.pixmap().size().width()
+        im_height = self.image_label.pixmap().size().height()
+        self.window_width, self.window_height = (
+            im_width * 1.04,
+            im_height * 1.16,
+        )
+        self.resize(self.window_width, self.window_height)
 
     def fit_to_window(self):
         im_width = self.image_label.pixmap().size().width()
@@ -204,17 +210,13 @@ class QtDatasetViewer(QMainWindow):
         act.triggered.connect(triggered_method)
         return act
 
-    def start(self):
-        app = QApplication([])
-        self.show()
-        sys.exit(app.exec_())
+
+def run_qt_dataset_viewer(dataloader: AbstractConvertToPil = None):
+    the_app = QApplication(sys.argv)
+    app = QtDatasetViewer(dataloader)
+    app.show()
+    sys.exit(the_app.exec_())
 
 
 if __name__ == "__main__":
-    the_app = QApplication(sys.argv)
-
-    imageViewerApp = QtDatasetViewer()
-
-    imageViewerApp.show()
-
-    sys.exit(the_app.exec_())
+    run_qt_dataset_viewer()

@@ -1,6 +1,6 @@
 [project]
 name = "qtdatasetviewer"
-version = "0.0.2"
+version = "0.0.3"
 authors = [
   { name="toretak", email="toretak@gmail.com" },
 ]
@@ -23,7 +23,7 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.poetry]
 name = "qtdatasetviewer"
-version = "0.0.2"
+version = "0.0.4"
 description = "Torch dataset explorer"
 license = "MIT"
 authors = [
@@ -47,7 +47,7 @@ packages = [
 ]
 
 [tool.poetry.dependencies]
-torch = ">=1.13.1"
+torch = ">=1.11.1"
 pyqt5 = ">=5.15"
 python = ">=3.8"
 

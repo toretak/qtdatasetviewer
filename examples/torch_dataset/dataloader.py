@@ -11,7 +11,7 @@ from PIL import Image
 from PyQt5.QtWidgets import QApplication
 
 from qtdatasetviewer.abstract_convert_to_pil import AbstractConvertToPil
-from qtdatasetviewer.qt_dataset_viewer import QtDatasetViewer
+from qtdatasetviewer.qt_dataset_viewer import run_qt_dataset_viewer
 
 
 class Convert(AbstractConvertToPil):
@@ -22,10 +22,5 @@ class Convert(AbstractConvertToPil):
 
 
 if __name__ == "__main__":
-    the_app = QApplication(sys.argv)
     dataset = SampleDataset(files=glob("data/*.*"))
-
-    imageViewerApp = QtDatasetViewer(Convert(dataset))
-
-    imageViewerApp.show()
-    sys.exit(the_app.exec_())
+    run_qt_dataset_viewer(Convert(dataset))

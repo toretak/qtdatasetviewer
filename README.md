@@ -27,7 +27,7 @@ Usage
 
     from PIL import Image
     from qtdatasetviewer.abstract_convert_to_pil import AbstractConvertToPil
-    from qtdatasetviewer.qt_dataset_viewer import QtDatasetViewer
+    from qtdatasetviewer.qt_dataset_viewer import run_qt_dataset_viewer
 
     import torchvision.transforms as T
 
@@ -40,14 +40,10 @@ Usage
             return transform(image)
 
 
-    if __name__ == '__main__':
-        the_app = QApplication(sys.argv)
-        dataset = SampleDataset(files=glob('data/*.*'))
-
-        imageViewerApp = QtDatasetViewer(Convert(dataset))
-
-        imageViewerApp.show()
-        sys.exit(the_app.exec_())
+       
+    if __name__ == "__main__":
+        dataset = SampleDataset(files=glob("data/*.*"))
+        run_qt_dataset_viewer(Convert(dataset))
 ```
 
 
